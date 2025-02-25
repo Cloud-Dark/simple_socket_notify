@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.io Notifier</title>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        button {
+            background: #ff7eb3;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #ff5277;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Klik tombol untuk menerima notifikasi!</h1>
+        <button id="notifyBtn">Kirim Notifikasi</button>
+    </div>
+    
+    <script>
+        const socket = io();
+        document.getElementById("notifyBtn").addEventListener("click", () => {
+            socket.emit("sendNotification");
+        });
+    </script>
+</body>
+</html>
